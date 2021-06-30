@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import AuthRouter from './modules/auth/AuthRouter'
+import AuthLoginScreen from './modules/auth/screens/login/AuthLoginScreen'
+import AuthRegisterScreen from './modules/auth/screens/register/AuthRegisterScreen'
+import PosRouter from './modules/pos/PosRouter'
 
-function App() {
+
+const App = () => {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+    
+      <Switch>
+        
+        <Route path="/pos" component={PosRouter} />
+        <Route path="/login" component={AuthLoginScreen}/>
+        <Route path="/register" component={AuthRegisterScreen} />
+
+
+      </Switch>
+
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
