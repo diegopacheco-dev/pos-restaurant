@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import platoIcon from "../../../../../assets/img/plato_blanco.svg";
 import PosContext from "../../../../../context/posContext/posContext";
-import { getCategorias } from "../../../../../firebase/servicios";
+import { getCategorias } from "../../../../../services/categoriaService";
+
+
 
 const PosCategorias = () => {
 
@@ -10,10 +12,17 @@ const PosCategorias = () => {
   const { seleccionarCategoriaGlobal, categoria_global } = useContext(PosContext);
 
   useEffect(() => {
-    getCategorias().then((data) => {
+
+    setCargando(true);
+
+
+    getCategorias().then(data => {
       setCategorias(data);
       setCargando(false);
-    });
+    })
+
+
+
   }, []);
 
   return (

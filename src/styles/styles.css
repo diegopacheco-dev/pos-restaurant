@@ -126,7 +126,7 @@ ul {
 .pos-container .tabla .mesas__lista li:hover {
 	background-color: #051633;
 }
-.pos-container .tabla .mesas__lista li.activo {
+.pos-container .tabla .mesas__lista li.active {
 	background-color: #051633;
 	border-bottom: 4px solid #ff9c63;
 }
