@@ -1,15 +1,26 @@
-import React, { useReducer, useState } from 'react'
+import React, { useReducer, useState, useEffect } from 'react'
 import PosContext from './posContext'
 import PosReducer from './posReducer'
 
 const PosState = ({ children }) => {
 
-
-    const [state, dispatch ] = useReducer(PosReducer, {
+    // verificar si el estado esta almacenado en el local storage
+    let stateNull = {
         categoria_global: null,
         mesa_global: null,
         pedidos: []
-    })
+    }
+    let stateLocalStorage = JSON.parse(localStorage.getItem('state'));
+
+
+    const [state, dispatch ] = useReducer(PosReducer, 
+        stateLocalStorage ? stateLocalStorage : stateNull
+    )
+
+    
+
+
+
 
     const incrementarPlatoAPedido = objPlato => {
         
@@ -161,6 +172,7 @@ const PosState = ({ children }) => {
             categoria_global: state.categoria_global,
             mesa_global: state.mesa_global , 
             incrementarPlatoAPedido,
+            pedidos: state.pedidos
         }}>
             { children }
         </PosContext.Provider>
