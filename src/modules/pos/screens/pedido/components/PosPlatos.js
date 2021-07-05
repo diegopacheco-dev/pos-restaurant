@@ -45,7 +45,7 @@ const PosPlatos = () => {
         : 
         (
           platos.map(objPlato => {
-            return <PosPlato objPlato={objPlato} key={objPlato.plato_id} />
+            return <PosPlato objPlato={objPlato} key={objPlato.id} />
           })  
         )      
         :

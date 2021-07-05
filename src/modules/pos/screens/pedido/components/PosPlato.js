@@ -3,7 +3,7 @@ import PosContext from '../../../../../context/posContext/posContext';
 
 const PosPlato = ({objPlato}) => {
 
-    const { incrementarPlatoAPedido} = useContext(PosContext);
+    const { incrementarPlatoAPedido, restarPlatoAPedido} = useContext(PosContext);
 
 
 
@@ -18,7 +18,9 @@ const PosPlato = ({objPlato}) => {
         <h4 className="carta__titulo">{objPlato.plato_nom}</h4>
         <span className="carta__precio">{objPlato.plato_precio}</span>
         <div className="carta__botones">
-          <button className="boton boton-outline-primary boton-restar">
+          <button className="boton boton-outline-primary boton-restar"
+          onClick={() => restarPlatoAPedido(objPlato)}
+          >
             -1
           </button>
           <button className="boton boton-outline-primary boton-sumar"
